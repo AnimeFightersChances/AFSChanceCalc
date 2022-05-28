@@ -30,7 +30,7 @@ $(function() {
       digitGroupSeparator: ',',
       maximumValue: '99999999999999999999999999',
       unformatOnSubmit: true,
-      allowDecimalPadding: false,
+      allowDecimalPadding: true,
       decimalPlaces: 0
     };
     
