@@ -111,4 +111,3 @@ function getChance(eggLuck, rarity, luck){
 
   });
 });
-
