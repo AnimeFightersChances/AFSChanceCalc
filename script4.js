@@ -4,7 +4,7 @@ $(function() {
   const SPELL_MULT = 119
   
   function calculate(wep, arm, helm, skill) {
-    return Math.floor((wep * (0.6597 + 0.013202 * skill)*((arm+helm)*0.0028))*SPELL_MULT);
+    return Math.floor((wep * (0.6597 + 0.013202 * 100)*((200)*0.0028))*SPELL_MULT);
   }
   
   function commarize(num) {
@@ -35,9 +35,7 @@ $(function() {
     };
     
     new AutoNumeric('#wep', settings);
-    new AutoNumeric('#hel', settings);
-    new AutoNumeric('#arm', settings);
-    new AutoNumeric('#skill', settings);
+    
   });
 
 
@@ -46,13 +44,9 @@ $(function() {
   $("form button").click(function() {
     console.log("Clicc!");
     let wep = $("#wep").val().replaceAll(',', '');
-    let arm = parseInt($("#arm").val().replaceAll(',', ''));
-    let helm = parseInt($("#hel").val().replaceAll(',', ''));
-    let skill = parseInt($("#skill").val().replaceAll(',', ''));
 
-    const BaseDamage = calculate(wep, arm, helm, skill);
+    const BaseDamage = calculate(wep);
     
-    console.log(wep, arm, helm, skill);
     console.log(BaseDamage);
 
     let DamageArray = [];
