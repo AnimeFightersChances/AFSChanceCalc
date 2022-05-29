@@ -48,14 +48,18 @@
 		</form>
 		 <script>
              var select = document.getElementById("stars"),
-                     arr = ["html","css","java","javascript","php","c++","node.js","ASP","JSP","SQL"];
+                     stars = ["Z Star","Ninja Star","Crazy Star","Pirate Star","Hero Star","Attack Star","Demon Star",
+			    "Ghoul Star","Hunter Star","Swordsman Star","Empty Star","Cursed Star","Power Star",
+			    "Sins Star","Destiny Star","Luck Star","Alchemy Star","Slime Star","Flame Star","Champion Star",
+			    "Wizard Star","Icy Star","Saw Star","Esper Star","Violent Star","Young Ninja Star","Gangster Star",
+			    "Inmate Star","Card Star","Academy Star"];
              
-             for(var i = 0; i < arr.length; i++)
+             for(var i = 0; i < stars.length; i++)
              {
                  var option = document.createElement("OPTION"),
-                     txt = document.createTextNode(arr[i]);
+                     txt = document.createTextNode(stars[i]);
                  option.appendChild(txt);
-                 option.setAttribute("value",arr[i]);
+                 option.setAttribute("value",stars[i]);
                  select.insertBefore(option,select.lastChild);
              }
              </script>
