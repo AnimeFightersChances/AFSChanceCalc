@@ -67,7 +67,7 @@ function getChance(eggLuck, rarity, luck){
       decimalPlaces: 2
     };
     
-    new AutoNumeric('#wep', settings);
+    new AutoNumeric('#luck', settings);
     
   });
 
