@@ -127,7 +127,7 @@ function floorToSF(num, sfs){
     $("p").html(text);
     $("p").fadeIn();
     if(rarity === "Divine" || rarity === "Common"){
-	    $("#footer").fadeIn();
+	    $(".footer").fadeIn();
     }
 
   });
