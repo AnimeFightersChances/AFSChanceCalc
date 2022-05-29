@@ -3,9 +3,42 @@ $(function() {
   const BaseText = $("p").html();
   const SPELL_MULT = 119
   
-  function calculate(wep, arm, helm, skill) {
-    return Math.floor((wep * (0.6597 + 0.013202 * 100)*((200)*0.0028))*SPELL_MULT);
-  }
+
+const chances = new Map([
+    ["Common", 100],
+    ["Rare",25], 
+	["Epic", 5], 
+	["Legendary",0.75], 
+	["Mythical",0.03], 
+	["Secret",0.0004], 
+	["Divine", 6E-06],
+]);
+
+const chanceIncreases = new Map([
+    ["Common", 0.9],
+    ["Rare",1], 
+	["Epic", 1.05], 
+	["Legendary",1.125], 
+	["Mythical",1.15], 
+	["Secret",1.1], 
+	["Divine", 1.05],
+]);
+
+function getTally(rarity, luck){
+    var chance = chances.get(rarity);
+	chance = chance * Math.pow(chanceIncreases.get(rarity), luck);
+
+	return chance;
+}
+
+function getChance(eggLuck, rarity, luck){
+    luck = eggLuck + luck;
+    var tally = getTally(rarity,luck);
+    totalSomething = getTally("Common",luck) + getTally("Common",luck) + getTally("Rare",luck) + getTally("Epic",luck) + getTally("Legendary",luck) + getTally("Mythical",luck) + getTally("Secret",luck) + getTally("Divine",luck)
+    
+    
+    return tally/totalSomething
+}
   
   function commarize(num) {
     // Alter numbers larger than 1k
@@ -43,28 +76,22 @@ $(function() {
   console.log(BaseText)
   $("form button").click(function() {
     console.log("Clicc!");
-    let wep = $("#wep").val().replaceAll(',', '');
-
-    const BaseDamage = calculate(wep);
     
-    console.log(BaseDamage);
+    
+    let luck = $("#luck").val().replaceAll(',', '');
 
-    let DamageArray = [];
+    const chance = 1/getChance(0,"Divine",14.5);
+    
+    console.log(chance);
+
+    let chanceArray = [];
 
     //No Inner
-    DamageArray.push(BaseDamage*0.95);
-    DamageArray.push(BaseDamage*1);
-    DamageArray.push(BaseDamage*1.05);
+    chanceArray.push(chance);
+    chanceArray.push(chance);
+    
 
-    //With Inner
-    DamageArray.push(BaseDamage*1.8*0.95);
-    DamageArray.push(BaseDamage*1.8*1);
-    DamageArray.push(BaseDamage*1.8*1.05);
-
-    //With Enhanced Inner
-    DamageArray.push(BaseDamage*1.9*0.95);
-    DamageArray.push(BaseDamage*1.9*1);
-    DamageArray.push(BaseDamage*1.9*1.05);
+   
 
     const regExp = /\((\d)\)/g;
     let text = BaseText;
