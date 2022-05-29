@@ -30,8 +30,8 @@ $(function() {
       digitGroupSeparator: ',',
       maximumValue: '99999999999999999999999999',
       unformatOnSubmit: true,
-      allowDecimalPadding: true,
-      decimalPlaces: 0
+      allowDecimalPadding: false,
+      decimalPlaces: 2
     };
     
     new AutoNumeric('#wep', settings);
