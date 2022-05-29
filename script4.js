@@ -45,7 +45,7 @@ $(function() {
   console.log(BaseText)
   $("form button").click(function() {
     console.log("Clicc!");
-    let wep = parseInt($("#wep").val().replaceAll(',', ''));
+    let wep = $("#wep").val().replaceAll(',', '');
     let arm = parseInt($("#arm").val().replaceAll(',', ''));
     let helm = parseInt($("#hel").val().replaceAll(',', ''));
     let skill = parseInt($("#skill").val().replaceAll(',', ''));
