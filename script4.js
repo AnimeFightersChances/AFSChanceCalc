@@ -1,7 +1,6 @@
 $(function() {
   $("p").hide()
   const BaseText = $("p").html();
-  const SPELL_MULT = 119
   
 
 const chances = new Map([
@@ -23,6 +22,18 @@ const chanceIncreases = new Map([
 	["Secret",1.1], 
 	["Divine", 1.05],
 ]);
+	
+const eggBonus = new Map([
+	["Z Star(World 1)" ,1.5], ["Ninja Star(World 2)" ,0.75], ["Crazy Star(World 3)" ,0.4],["Pirate Star(World 4)" ,0],
+	["Hero Star(World 5)" ,-0.5],["Attack Star(World 6)" ,-1],["Demon Star(World 7)" ,-1.75],["Ghoul Star(World 8)" ,-2.5],
+	["Hunter Star(World 9)" ,-3],["Swordsman Star(World 10)" ,-3.5],["Empty Star(World 11)" ,-4],["Cursed Star(World 12)" ,-4.5],
+	["Power Star(World 13)" ,-5],["Sins Star(World 14)" ,-5.5],["Destiny Star(World 15)" ,-6],["Luck Star(World 16)" ,-6.5],
+	["Alchemy Star(World 17)" ,-7],["Slime Star(World 18)" ,-7.5],["Flame Star(World 19)" ,-8],["Champion Star(World 20)" ,-8.5],
+	["Wizard Star(World 21)" ,-9],["Icy Star(World 22)" ,-9.5],["Saw Star(World 23)" ,-10],["Esper Star(World 24)" ,-10],
+	["Violent Star(World 25)" ,-10.5],["Young Ninja Star(World 26)" ,-10.5],["Gangster Star(World 27)" ,-11],["Inmate Star(World 28)" ,-11],
+	["Card Star(World 29)" ,-11],["Academy Star(World 30)" ,-11]
+]);
+
 
 function getTally(rarity, luck){
     var chance = chances.get(rarity);
@@ -39,10 +50,15 @@ function getChance(eggLuck, rarity, luck){
     
     return tally/totalSomething
 }
-  
+	
+function floorToSF(num, sfs){
+    let places = Math.pow(10, sfs - Math.floor(Math.log10(num)) - 1)
+    
+    return Math.floor(num * places) / places
+}
   function commarize(num) {
     // Alter numbers larger than 1k
-    if (num >= 1e3) {
+    if (typeof(num) === 'number' && num >= 1e3) {
       var units = ["k", "M", "B", "T", "qd", "Qn", "sx", "Sp", "O", "N", "de"];
 
       // Divide to get SI Unit engineering style numbers (1e3,1e6,1e9, etc)
@@ -79,16 +95,19 @@ function getChance(eggLuck, rarity, luck){
     
     
     let luck = $("#luck").val().replaceAll(',', '');
+    let rarity = $("#rarity").val();
+    let eggLuck = eggBonus.get($("#stars").val());
 
-    const chance = 1/getChance(0,"Divine",14.5);
+
+    const chance = getChance(eggLuck,rarity,luck);
     
     console.log(chance);
 
     let chanceArray = [];
 
     //No Inner
-    chanceArray.push(chance);
-    chanceArray.push(chance);
+    chanceArray.push(floorToSF(100 * chance,2) + "%");
+    chanceArray.push(1/chance);
     
 
    
