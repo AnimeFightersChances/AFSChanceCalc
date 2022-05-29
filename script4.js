@@ -100,7 +100,7 @@ function getChance(eggLuck, rarity, luck){
     console.log(text)
     console.log("Checking matches");
     for (const match of matches) {
-      let toChange = commarize(DamageArray[match[1]]);
+      let toChange = commarize(chanceArray[match[1]]);
       text = text.replace(match[0], toChange);
     };
     console.log("Done matches");
