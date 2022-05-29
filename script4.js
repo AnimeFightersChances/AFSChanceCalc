@@ -89,9 +89,8 @@ function floorToSF(num, sfs){
 
 
   console.log($("p").text())
-  console.log(BaseText)
   $("form button").click(function() {
-    console.log("Clicc!");
+    console.log("Clicked!");
     
     
     let luck = parseFloat($("#luck").val().replaceAll(',', ''));
@@ -127,6 +126,9 @@ function floorToSF(num, sfs){
 
     $("p").html(text);
     $("p").fadeIn();
+    if(rarity === "Divine" || rarity === "Common"){
+	    $("#footer").fadeIn();
+    }
 
   });
 });
