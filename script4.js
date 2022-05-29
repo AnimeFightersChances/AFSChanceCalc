@@ -48,7 +48,7 @@ function getChance(eggLuck, rarity, luck){
     totalSomething = getTally("Common",luck) + getTally("Common",luck) + getTally("Rare",luck) + getTally("Epic",luck) + getTally("Legendary",luck) + getTally("Mythical",luck) + getTally("Secret",luck) + getTally("Divine",luck)
     
     
-    return tally/totalSomething
+    return tally/totalSomething;
 }
 	
 function floorToSF(num, sfs){
