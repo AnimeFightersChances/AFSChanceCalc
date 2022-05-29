@@ -77,6 +77,7 @@ $(function() {
       text = text.replace(match[0], toChange);
     };
     console.log("Done matches");
+    
 
     $("p").html(text);
     $("p").fadeIn();
