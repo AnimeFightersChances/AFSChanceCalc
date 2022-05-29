@@ -98,14 +98,14 @@ function floorToSF(num, sfs){
     let rarity = $("#rarity").val();
     let eggLuck = eggBonus.get($("#stars").val());
 	
-    console.log(luck,rarity,eggLuck);
+    console.log(eggLuck,rarity,luck);
     const chance = getChance(eggLuck,rarity,luck);
     
     console.log(chance);
 
     let chanceArray = [];
 
-    //No Inner
+   
     chanceArray.push(floorToSF(100 * chance,2) + "%");
     chanceArray.push(1/chance);
     
