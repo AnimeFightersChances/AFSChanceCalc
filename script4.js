@@ -94,9 +94,9 @@ function floorToSF(num, sfs){
     console.log("Clicc!");
     
     
-    let luck = $("#luck").val().replaceAll(',', '');
+    let luck = parseFloat($("#luck").val().replaceAll(',', ''));
     let rarity = $("#rarity").val();
-    let eggLuck = eggBonus.get($("#stars").val());
+    let eggLuck = parseFloat(eggBonus.get($("#stars").val()));
 	
     console.log(eggLuck,rarity,luck);
     let chance = getChance(eggLuck,rarity,luck);
