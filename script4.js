@@ -99,7 +99,7 @@ function floorToSF(num, sfs){
     let eggLuck = eggBonus.get($("#stars").val());
 	
     console.log(eggLuck,rarity,luck);
-    const chance = getChance(eggLuck,rarity,luck);
+    let chance = getChance(eggLuck,rarity,luck);
     
     console.log(chance);
 
